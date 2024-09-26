@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PROPOSAL DDB</title>
+    <style type="text/css">
+    /* Common styles */
+    body {
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      color: #666666;
+      font-size: 16px;
+      line-height: 1.5;
+      margin: 0;
+      padding: 0;
+      background: #f8f8f8;
+    }
+
+    .break-word{
+      word-break: break-word;
+      white-space: break-spaces;
+    }
+
+    a {
+      color: #1d2a3d;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Media queries for responsive design */
+    @media only screen and (max-width: 600px) {
+      /* Font sizes */
+      h1 a {
+        font-size: 20px !important;
+      }
+
+      h2 a {
+        font-size: 16px !important;
+      }
+
+      h3 a {
+        font-size: 20px !important;
+      }
+
+      /* Table and content width */
+      .es-content table,
+      .es-content {
+        width: 100% !important;
+        max-width: 600px !important;
+      }
+    }
+
+    /* Specific element styles */
+    .userText {
+      color: #ff8c00 !important;
+      font-weight: bold !important;
+      text-align: center !important;
+      font-size: 18px !important;
+    }
+
+    .text-bold {
+      font-weight: bold !important;
+    }
+
+    .text-light {
+      font-weight: 400 !important;
+    }
+
+    .pin {
+      background-color: #f8f8f8 !important;
+      border: 1px solid #e5e5e5 !important;
+      color: #1d2a3d !important;
+      font-weight: bold !important;
+      text-decoration: none !important;
+      border-radius: 5px !important;
+      padding: 15px 15px !important;
+      font-size: 28px !important;
+      width: 400px !important;
+      display: inline-block;
+    }
+
+    .button-container {
+      height: 100px !important;
+    }
+
+    .button {
+      background-color: #ff8c00 !important;
+      border-color: #ff8c00 !important;
+      color: #ffffff !important;
+      font-weight: bold !important;
+      border-radius: 5px !important;
+      padding: 15px 15px !important;
+      font-size: 16px !important;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .button:hover {
+      background-color: #ff8c00 !important;
+      border-color: #ff8c00 !important;
+      color: #ffffff !important;
+    }
+
+    .es-wrapper-color {
+      background-color: #f8f8f8 !important;
+    }
+
+    .es-content-body {
+      padding: 50px 20px 0px 20px !important;
+      width: 100%;
+      min-height: 50vh !important;
+    }
+
+    .td-container {
+      min-height: 100px !important;
+    }
+
+    .container {
+      min-height: 20vh !important;
+      width: 100% !important;
+    }
+
+    .mb-2 {
+      margin-bottom: 2rem !important;
+    }
+  </style>
+  </head>
+
+  <body style="margin: 0; padding: 0;" class="es-content">
+    <div style="background-color: #f8f8f8;">
+      <table class="es-wrapper" width="100%" cellspacing="0" cellpadding="0">
+        <tr>
+          <td align="center">
+
+            {{!-- header --}}
+            {{> header}}
+            {{!-- header --}}
+
+            <!-- Main Content Section -->
+            <table cellspacing="0" cellpadding="0"
+              style="background-color: #f8f8f8; width:590px;"
+              align="center">
+              <tr>
+                <td
+                  style="Margin: 0; padding-bottom: 10px; padding-left: 20px; padding-right: 20px; padding-top: 40px; background-color: #f8f8f8; border-radius: 80px;"
+                  bgcolor="#f8f8f8" align="left">
+                  <table width="100%" cellspacing="0" cellpadding="0"
+                    style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; border-spacing: 0px;">
+
+                    <tr>
+                      <td align="center"
+                        style="Margin: 0; padding-top: 20px; padding-left: 25px; padding-right: 35px; padding-bottom: 40px;">
+                        <div style="background-color: #f8f8f8; padding: 20px;">
+                          <h1
+                            style="Margin: 0; line-height: 29px; font-family: arial, 'helvetica neue', helvetica, sans-serif; font-size: 24px; font-style: normal; font-weight: normal; color: #f5812d;">
+                            {{templateConfig.paragraph1}} {{data.name}}!<br><br></h1>
+                          <p
+                            style="Margin: 0; -webkit-text-size-adjust: none; -ms-text-size-adjust: none; mso-line-height-rule: exactly; font-family: 'lucida sans unicode', 'lucida grande', sans-serif; line-height: 18px; color: #666666; font-size: 15px; margin-bottom: 10px;">
+                            {{templateConfig.paragraph2}}<br><br></p>
+                          <a href="{{data.url}}" class="button">{{templateConfig.button}}</a>
+                          <p
+                            style="Margin: 0; -webkit-text-size-adjust: none; -ms-text-size-adjust: none; mso-line-height-rule: exactly; font-family: 'lucida sans unicode', 'lucida grande', sans-serif; line-height: 18px; color: #666666; font-size: 15px; margin-bottom: 10px;"><br>
+                            {{templateConfig.paragraph3}}<br><br>
+                            <a href="{{data.url}}"
+                              class="break-word"
+                              style="-webkit-text-size-adjust: none; -ms-text-size-adjust: none; mso-line-height-rule: exactly; text-decoration: none; color: #1d2a3d; font-size: 16px;">{{data.url}}</a><br><br><br><br></p>
+                          <span
+                            style="font-family: roboto, 'helvetica neue', helvetica, arial, sans-serif"><u>{{templateConfig.paragraph4}}</u></span>
+                        </div>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+
+            {{!-- footer --}}
+            {{> footer templateConfig.copyright}}
+            {{!-- footer --}}
+
+          </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+
+</html>

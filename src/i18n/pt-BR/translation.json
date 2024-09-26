@@ -1,0 +1,78 @@
+{
+  "MESSAGES": {
+    "STRING_MESSAGE": "deve ser uma string",
+    "NOT_EMPTY_MESSAGE": "não pode ser vazio",
+    "EMAIL_IS_VALID_MESSAGE": "deve ser um email válido",
+    "ONLY_NUMBER_MESSAGE": "deve ser um número",
+    "ONLY_LETTERS_WITH_SPACE_MESSAGE": "deve ser uma string com apenas letras e espaços",
+    "LENGTH_MESSAGE": "deve ter entre {0.min} e {0.max} caracteres",
+    "IS_PHONE_NUMBER_MESSAGE": "deve ser um número de telefone válido",
+    "ONLY_DATE_MESSAGE": "deve ser uma data válida",
+    "ONLY_INTEGER_MESSAGE": "deve ser um inteiro válido",
+    "MIN_SIZE_MESSAGE": "deve conter pelo menos {constraints.0} item",
+    "MAX_SIZE_MESSAGE": "deve conter menos de {constraints.0} itens",
+    "VALIDATE_PASSWORD_MESSAGE": "deve conter pelo menos uma letra maiúscula, uma letra minúscula, um número e um caractere especial",
+    "ONLY_BOOLEAN_MESSAGE": "deve ser um booleano",
+    "IS_DATE_MESSAGE": "deve ser uma data válida",
+    "ONLY_VALID_IP_MESSAGE": "deve ser um IP válido",
+    "ONLY_VALID_URL_MESSAGE": "deve ser uma URL válida",
+    "ONLY_VALID_IPV4_MESSAGE": "deve ser um IPV4 válido",
+    "ONLY_VALID_IPV6_MESSAGE": "deve ser um IPv6 válido",
+    "IS_ENUM_MESSAGE": "deve ser um dos valores permitidos",
+    "IS_ARRAY_MESSAGE": "deve ser um array",
+    "WHITELIST_MESSAGE": "essa propriedade não existe neste corpo de solicitação",
+    "ONLY_DECIMAL_MESSAGE": "deve ser um número decimal válido",
+    "INVALID_DATE_FORMAT": "deve ser uma data válida"
+  },
+  "MODULES": {
+    "AUTH_SERVICE": {
+      "PASSWORD_OR_EMAIL_INVALID": "Email ou senha inválidos",
+      "USER_NOT_FOUND": "Usuário não encontrado",
+      "TOKEN_IS_NOT_VALID": "Token inválido",
+      "DO_NOT_HAVE_PERMISSION": "Você não tem permissão para acessar este recurso",
+      "RECOVER_PASSWORD_SUBJECT": "Recuperação de senha - Doctor's Data Bank",
+      "RECOVER_PASSWORD_TOKEN_IS_VALID": "Token válido",
+      "CODE_EXPIRED": "Código expirado",
+      "PASSWORD_UPDATED": "Senha atualizada",
+      "EMAIL_SENT": "Email enviado com sucesso",
+      "CODE_IS_NOT_VALID": "Código inválido",
+      "LOGOUT_SUCEFFULLY": "Desconectado com sucesso",
+      "REFRESH_TOKEN_NOT_FOUND": "Token de atualização não encontrado"
+    },
+    "USERS_SERVICE": {
+      "USER_ALREADY_EXISTS": "Usuário já existe",
+      "REFERRED_USER_CODE_NOT_FOUND": "Código de usuário indicado não foi encontrado",
+      "EMAIL_IS_VALID": "email validado com sucesso",
+      "ABOUT_IS_NOT_STRING": "Sobre deve ser uma string",
+      "EMAIL_ALREADY_EXISTS": "Email já existe",
+      "EMAIL_VALIDATE_CODE_RESENT": "Código de validação de email reenviado com sucesso",
+      "USER_NOT_FOUND": "Usuário não encontrado",
+      "USER_IS_NOT_ACTIVE": "Usuário não está ativo",
+      "USER_DELETED": "O usuário {0.Name} foi deletado",
+      "USER_IS_INACTIVE": "O usuário {0.Name} está inativo",
+      "SKILLS_UPDATED": "Habilidades atualizadas com sucesso"
+    },
+    "SESSIONS_SERVICE": {
+      "SESSION_NOT_VALID_OR_EXPIRED": "Sessão inválida ou expirada"
+    },
+    "ROLES_SERVICE": {
+      "ROLE_NOT_FOUND": "A função não encontrada",
+      "ROLE_ALREADY_EXISTS": "A função já existe",
+      "ROLE_CREATED_SUCCESSFULLY": "Função criada com sucesso",
+      "ROLE_DELETED_SUCCESSFULLY": "Função deletada com sucesso",
+      "ROLE_UPDATED_SUCCESSFULLY": "Função atualizada com sucesso"
+    },
+    "PRODUCTIONS_SERVICE": {
+      "PRODUCTION_CREATED_SUCCESSFULLY": "Produção criada com sucesso",
+      "PRODUCTION_NOT_FOUND": "Produção não encontrada",
+      "PRODUCTION_UPDATED_SUCCESSFULLY": "Produção atualizada com sucesso",
+      "PRODUCTION_DELETED_SUCCESSFULLY": "Produção deletada com sucesso"
+    },
+    "SERVICE_ORDERS_SERVICE": {
+      "SERVICE_ORDER_CREATED_SUCCESSFULLY": "Ordem de serviço criada com sucesso",
+      "SERVICE_ORDER_NOT_FOUND": "Ordem de serviço não encontrada",
+      "SERVICE_ORDER_UPDATED_SUCCESSFULLY": "Ordem de serviço atualizada com sucesso",
+      "SERVICE_ORDER_DELETED_SUCCESSFULLY": "Ordem de serviço deletada com sucesso"
+    }
+  }
+}

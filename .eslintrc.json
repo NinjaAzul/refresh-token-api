@@ -1,0 +1,38 @@
+{
+  "env": {
+    "node": true,
+    "es2021": true
+  },
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2021,
+    "sourceType": "module"
+  },
+  "extends": ["plugin:@typescript-eslint/recommended", "plugin:prettier/recommended"],
+  "plugins": ["@typescript-eslint", "import", "eslint-plugin-import-helpers", "prettier"],
+  "ignorePatterns": ["*.js"],
+  "rules": {
+    "prettier/prettier": "off",
+    "no-console": ["warn", { "allow": ["warn", "error"] }],
+    "import/no-duplicates": "error",
+    "import/no-cycle": "error",
+    "no-useless-rename": "warn",
+    "prefer-template": "error",
+    "object-shorthand": "warn",
+    "@typescript-eslint/no-unused-vars": "warn",
+    "import-helpers/order-imports": [
+      "warn",
+      {
+        "groups": [["/^@nestjs/", "/^@prisma/"], "module", "parent", ["sibling", "index"]],
+        "newlinesBetween": "always",
+        "alphabetize": { "order": "asc", "ignoreCase": true }
+      }
+    ]
+  },
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", "*.ts"]
+    }
+  }
+}

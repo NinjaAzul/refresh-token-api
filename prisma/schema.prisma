@@ -1,0 +1,221 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String?
+  email     String   @unique
+  password  String
+  isActive  Boolean? @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  //foregn key
+  roleId Int
+  role   Role @relation(fields: [roleId], references: [id])
+
+  //relation
+  serviceOrders ServiceOrder[] @relation("ServiceOrderOperator")
+  session       Session[]
+  ServiceOrder  ServiceOrder[]
+
+  @@map("users")
+}
+
+model Session {
+  id           Int      @id @default(autoincrement())
+  refreshToken String   @unique
+  user         User     @relation(fields: [userId], references: [id])
+  userId       Int
+  createdAt    DateTime @default(now())
+  expiresAt    DateTime
+
+  @@map("sessions")
+}
+
+model Feature {
+  id      Int         @id @default(autoincrement())
+  name    String      @unique
+  feature FeatureEnum
+
+  //relation
+  permissions Permission[]
+  roleFeature RoleFeature[]
+
+  @@map("features")
+}
+
+model Permission {
+  canCreate   Boolean @default(true)
+  canRead     Boolean @default(true)
+  canUpdate   Boolean @default(true)
+  canDelete   Boolean @default(true)
+  canFilter   Boolean @default(true)
+  canCustom   Boolean @default(true)
+  customRules Json    @default("{}")
+
+  feature   Feature @relation(fields: [featureId], references: [id])
+  featureId Int
+
+  role   Role @relation("RoleToPermission", fields: [roleId], references: [id], onDelete: Cascade)
+  roleId Int
+
+  @@unique([featureId, roleId])
+  @@map("permissions")
+}
+
+model Role {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  //relation
+  RoleFeature RoleFeature[] @relation("RoleToRoleFeature")
+  Permission  Permission[]  @relation("RoleToPermission")
+  User        User[]
+
+  @@map("roles")
+}
+
+model RoleFeature {
+  roleId    Int
+  featureId Int
+
+  // Foreign keys
+  role    Role    @relation("RoleToRoleFeature", fields: [roleId], references: [id], onDelete: Cascade)
+  feature Feature @relation(fields: [featureId], references: [id])
+
+  @@unique([roleId, featureId])
+  @@map("role_features")
+}
+
+model Product {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  code      String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  //relation
+  serviceOrders ServiceOrder[]
+
+  @@map("products")
+}
+
+model Machine {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  //relation
+  serviceOrders ServiceOrder[]
+
+  @@map("machines")
+}
+
+model Customer {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  //relation
+  serviceOrders ServiceOrder[]
+
+  @@map("customers")
+}
+
+model ServiceOrder {
+  id                                            Int       @id @default(autoincrement())
+  orderNumber                                   String?   @unique
+  internalCode                                  String
+  plannedLineQty                                Decimal
+  plannedBobbinQty                              Int
+  deliveryDate                                  DateTime
+  dateSolicitadeByCustomer                      DateTime?
+  newDateByCustomer                             DateTime?
+  leadTimeXDateRequestDateSolicitatedByCustomer Int?
+  metersByPL                                    Decimal?
+  PLQty                                         Int?
+  dateEstimatedToDelivery                       DateTime?
+  newDateEstimatedToDeliveryLiner               DateTime?
+  invoiceNumber                                 String?
+  productionMetersQuantity                      Decimal?
+  createdAt                                     DateTime  @default(now())
+  updatedAt                                     DateTime  @updatedAt
+
+  status StatusEnum? @default(WAITING)
+
+  //foreign key
+  customerId Int
+  customer   Customer @relation(fields: [customerId], references: [id])
+
+  //foreign key
+  machine   Machine @relation(fields: [machineId], references: [id])
+  machineId Int
+
+  //foreign key
+  product   Product @relation(fields: [productId], references: [id])
+  productId Int
+
+  //foregn key
+  operatorId Int?
+  operator   User? @relation("ServiceOrderOperator", fields: [operatorId], references: [id])
+
+  //relation
+  production Production[]
+  User       User?        @relation(fields: [userId], references: [id])
+  userId     Int?
+
+  @@map("service_orders")
+}
+
+model Production {
+  id Int @id @default(autoincrement())
+
+  itemNumber        Int?
+  deliveredDate     DateTime
+  mp                String
+  numberBS          String
+  producedLineQty   Int
+  producedBobbinQty Int
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  //foregn key
+  serviceOrderId Int
+  serviceOrder   ServiceOrder @relation(fields: [serviceOrderId], references: [id])
+
+  @@map("productions")
+}
+
+enum StatusEnum {
+  WAITING
+  IN_PROGRESS
+  COMPLETED
+  CANCELED
+}
+
+enum FeatureEnum {
+  SERVICE_ORDER
+  PRODUCT
+  CUSTOMER
+  USER
+  MACHINE
+  PRODUCTION
+  ROLE_PERMISSION
+}
